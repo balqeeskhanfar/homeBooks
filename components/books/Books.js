@@ -10,7 +10,9 @@ const Books = () => {
   useEffect(() => {
     async function fetchSheetData() {
       try {
-        const response = await fetch("static/Homebooks.xlsx"); // Access the Excel file from the static directory
+        const response = await fetch(
+          "https://1drv.ms/x/s!Aki4UxF46a06g5ULWB6ay-J0MUEZ1Q"
+        );
         const buffer = await response.arrayBuffer();
         const workbook = XLSX.read(buffer, { type: "buffer" });
 
