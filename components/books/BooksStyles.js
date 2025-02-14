@@ -14,6 +14,7 @@ export const BooksContainer = styled.div`
   width: 90vw;
   margin: auto;
   gap: 20px;
+  justify-content: center;
 `;
 
 export const Title = styled.h1`
