@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
-import { Container, Title, BooksContainer } from "./BooksStyles";
+import {
+  Container,
+  Title,
+  BooksContainer,
+  StyledInput,
+  StyledSelect,
+  ControlsContainer,
+} from "./BooksStyles";
 import BookComponent from "../book/BookComponent";
 
 const Books = () => {
   const [sheetData, setSheetData] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); // حالة البحث
-  const [sortOption, setSortOption] = useState(""); // حالة الترتيب
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState("");
   useEffect(() => {
     async function fetchSheetData() {
       try {
-        const response = await fetch("static/Homebooks.xlsx"); // تحميل ملف الإكسل
+        const response = await fetch("static/Homebooks.xlsx");
         const buffer = await response.arrayBuffer();
         const workbook = XLSX.read(buffer, { type: "buffer" });
 
-        // قراءة أول ورقة في الملف
         const sheet = workbook.Sheets[workbook.SheetNames[0]];
         const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
@@ -61,39 +66,26 @@ const Books = () => {
     <Container>
       <Title>📚 أهلًا بكم في مكتبتنا 📚 </Title>
 
-      {/* مربع البحث */}
-      <input
-        type="text"
-        placeholder="ابحث عن اسم الكتاب أو الكاتب..."
-        value={searchQuery}
-        onChange={handleSearch}
-        style={{
-          padding: "10px",
-          margin: "20px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-        }}
-      />
+      <ControlsContainer>
+        {/* مربع البحث */}
+        <StyledInput
+          type="text"
+          placeholder="ابحث عن اسم الكتاب أو الكاتب..."
+          value={searchQuery}
+          onChange={handleSearch}
+        />
 
-      {/* قائمة الترتيب */}
-      <select
-        value={sortOption}
-        onChange={handleSortChange}
-        style={{
-          margin: "20px",
-          borderRadius: "5px",
-          width: "40%",
-          marginLeft: "55%",
-        }}
-      >
-        <option value="">ترتيب حسب...</option>
-        <option value="title-asc">اسم الكتاب (أ-ي)</option>
-        <option value="title-desc">اسم الكتاب (ي-أ)</option>
-        <option value="author-asc">اسم الكاتب (أ-ي)</option>
-        <option value="author-desc">اسم الكاتب (ي-أ)</option>
-        <option value="pages-asc">عدد الصفحات تصاعدي</option>
-        <option value="pages-desc">عدد الصفحات تنازلي</option>
-      </select>
+        {/* قائمة الترتيب */}
+        <StyledSelect value={sortOption} onChange={handleSortChange}>
+          <option value="">ترتيب حسب...</option>
+          <option value="title-asc">اسم الكتاب (أ-ي)</option>
+          <option value="title-desc">اسم الكتاب (ي-أ)</option>
+          <option value="author-asc">اسم الكاتب (أ-ي)</option>
+          <option value="author-desc">اسم الكاتب (ي-أ)</option>
+          <option value="pages-asc">عدد الصفحات تصاعدي</option>
+          <option value="pages-desc">عدد الصفحات تنازلي</option>
+        </StyledSelect>
+      </ControlsContainer>
 
       <BooksContainer>
         {sortedBooks.map(
