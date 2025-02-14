@@ -13,9 +13,19 @@ export const BooksContainer = styled.div`
   flex-wrap: wrap;
   width: 90vw;
   margin: auto;
+  gap: 20px;
 `;
 
 export const Title = styled.h1`
-  color: #000;
-  margin: auto;
+  font-size: 1.5rem;
+  font-weight: bold;
+  -webkit-background-clip: text;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;

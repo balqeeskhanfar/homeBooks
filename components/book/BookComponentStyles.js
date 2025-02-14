@@ -30,6 +30,11 @@ export const BookAuthor = styled.p`
   color: #666;
 `;
 
+export const BookShelf = styled.p`
+  color: #666;
+  font-size: 12px;
+`;
+
 export const BookPages = styled.p`
   color: #888;
 `;

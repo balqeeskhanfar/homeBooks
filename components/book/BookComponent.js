@@ -7,16 +7,18 @@ import {
   BookTitle,
   BookAuthor,
   BookPages,
+  BookShelf,
 } from "./BookComponentStyles";
 
-const BookComponent = ({ title, author, pages, image }) => {
+const BookComponent = ({ title, author, pages, shelf, image }) => {
   return (
     <BookContainer>
       <BookImage src={image} alt={title} />
       <BookInfo>
         <BookTitle>{title}</BookTitle>
         <BookAuthor>{author}</BookAuthor>
-        <BookPages>{pages} pages</BookPages>
+        <BookPages> صفحة {pages} </BookPages>
+        <BookShelf>{shelf} الرف رقم</BookShelf>
       </BookInfo>
     </BookContainer>
   );
