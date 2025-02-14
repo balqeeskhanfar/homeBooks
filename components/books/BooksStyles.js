@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
-  background-color: #f0f0f0;
+  background-color: #bad4d4;
 `;
 
 export const BooksContainer = styled.div`
